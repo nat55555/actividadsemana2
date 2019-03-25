@@ -2,13 +2,23 @@
 
 
 <form action="/ejecutacreacion" method="post">
-<input type="number" name="id">	
-<input type="text" name="nombre">
-<input type="text" name="descripcion">
-<input type="text" name="modalidad">
+<label for="id">ID DEL CURSO</label>
+<input type="number" name="id" required>
+<label for="nombre">NOMBRE DEL CURSO</label>
+<input type="text" name="nombre" required>
+<label for="description">DESCRIPCION</label>
+<input type="text" name="descripcion" required>
+<label for="valor">VALOR</label>
+<input type="text" name="valor" required>
+<label for="modalidad">MODALIDAD</label>
+<select name="modalidad" id="select1">
+<option value="presencial">presencial</option>
+<option value="virtual">virtual</option>
+</select>
+<label for="intensidad">INTENSIDAD HORARIA</label>
 <input type="text" name="intensidad">
-<input type="text" name="estado">
-<select multiple size="2">
+<label for="estado">ESTADO</label>
+<select name="estado" id="select2">
 <option value="Disponible">Curso disponible</option>
 <option value="Cerrado">Curso Cerrado</option>
 </select>

@@ -4,7 +4,7 @@ listaCursos = []; // un vector que es el que vamos a llenar en Json, inicialment
 
  const listar = ()  => {
     try {	
-	listaEstudiantes = require ('./listacursos.json'); // TRAE (lee) EL LISTADO DE CURSOS EXISTENTE
+	listaCursos = require('../../listacursos.json'); // TRAE (lee) EL LISTADO DE CURSOS EXISTENTE
 	} catch {  // se va para aqui si el archivo buscado no existe
 		listaCursos = []; 	
 	}
@@ -52,7 +52,7 @@ listaCursos = []; // un vector que es el que vamos a llenar en Json, inicialment
 }
 
 const guardar = ()  => {
-	let datos = JSON.stringify(listaCursos);        // guarda en string la variable lista estudiante dentro de json
+	let datos = JSON.stringify(listaCursos);        // guarda en string la variable lista cursos dentro de json
 	fs.writeFile('listacursos.json', datos, (err)=>{
 		     if (err) throw (err);
 				console.log ('Archivo creado' );  // de lo contrario archivo creado con exito
