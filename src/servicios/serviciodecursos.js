@@ -13,6 +13,7 @@ listaCursos = []; // un vector que es el que vamos a llenar en Json, inicialment
 
  const crear = (curso) => {
 	  listar();
+	  let msg;
 	  let cur = {
 	  id: curso.id,	  
 	  nombre: curso.nombre,    //datos que quedan dentro del objeto est
@@ -26,11 +27,14 @@ listaCursos = []; // un vector que es el que vamos a llenar en Json, inicialment
 	 let duplicado = listaCursos.find(identi => identi.id == curso.id); 
 	 if (!duplicado){
 	  listaCursos.push(cur);  // almacenar el objeto dentro del  vector lista cursos
-	  console.log(listaCursos);
+	  msg = 'curso creado exitosamente!!!';
 	  guardar(); // guarda lo q esta en lista cursos dentro de datos  - esos datos en el archivo
 	 }
 	 else
-		console.log('ya existe otro curso con ese nombre');
+		msg = 'ya existe un curso con ese ID, use otro ID para la creación';
+
+
+	return msg;
 }
 
 

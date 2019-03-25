@@ -80,7 +80,7 @@ app.get('/crear', (req,res) => {
 	res.render('crearcurso');
 }); 
 
-app.post('/ejecutacreacion', (req,res) => {
+app.post('/crear', (req,res) => {
 	let curso = {
 		id: parseInt(req.body.id),		
 		nombre: req.body.nombre,
@@ -90,9 +90,9 @@ app.post('/ejecutacreacion', (req,res) => {
 		intensidad: req.body.intensidad,	
 		estado: req.body.estado	
 	};
-	let crearcurso = servicioCursos.crear(curso);	
+	let msg = servicioCursos.crear(curso);	
 
-	console.log(req.body);
+	//console.log(req.body);
 	res.render('crearcurso',{
 		id: parseInt(req.body.id),		
 		nombre: req.body.nombre,
@@ -101,7 +101,7 @@ app.post('/ejecutacreacion', (req,res) => {
 		modalidad: req.body.modalidad,	
 		intensidad: req.body.intensidad,	
 		estado: req.body.estado	,
-		mensajeError : 'Se creo el Curso'
+		mensajeError : msg
 		});	
 
 }); 

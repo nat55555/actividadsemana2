@@ -42,12 +42,12 @@ const crear = (id, nombre, correo, telefono, clave	) => {
 // parabuscar los duplicados la llave sera el id	 
 	 let duplicado = listaUsuario.find(identi => identi.id == id); 
 	 if (!duplicado){
-	  listaUsuario.push(usuarioDb);  // almacenar el objeto dentro del  vector lista cursos
-	  guardar(); // guarda lo q esta en lista cursos dentro de datos  - esos datos en el archivo
+	  listaUsuario.push(usuarioDb);  // almacenar el objeto dentro del  vector lista 
+	  guardar(); // guarda lo q esta en lista dentro de datos  - esos datos en el archivo
 	 }
-	 else
+	 else{
 		msg = 'ya existe un usuario con esta identificacion';
-
+		}
 
 	return msg;
 }
