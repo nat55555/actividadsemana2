@@ -1,0 +1,21 @@
+<p> Pagina crear curso </p>
+
+
+<form action="/ejecutacreacion" method="post">
+<input type="number" name="id">	
+<input type="text" name="nombre">
+<input type="text" name="descripcion">
+<input type="text" name="modalidad">
+<input type="text" name="intensidad">
+<input type="text" name="estado">
+<select multiple size="2">
+<option value="Disponible">Curso disponible</option>
+<option value="Cerrado">Curso Cerrado</option>
+</select>
+<button>Crear Curso</button>
+</form>
+
+
+<div>
+{{mensajeError}}
+</div>	
