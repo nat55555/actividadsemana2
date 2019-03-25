@@ -49,7 +49,9 @@ app.post('/auth', (req,res) => {
 
 app.get('/listar', (req,res) => {
 	let listacursos = servicioCursos.mostrar();
-	res.render('listarcursos');
+	res.render('listarcursos',{
+		listacursos : listacursos
+	});
 });
 
 app.get('/crear', (req,res) => {

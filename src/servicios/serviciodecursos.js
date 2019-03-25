@@ -47,8 +47,11 @@ listaCursos = []; // un vector que es el que vamos a llenar en Json, inicialment
 		console.log (curso.modalidad);
 		console.log (curso.intensidad);									
 		console.log (curso.estado + '\n');
+
 	
 	});
+
+		return listaCursos;
 }
 
 const guardar = ()  => {

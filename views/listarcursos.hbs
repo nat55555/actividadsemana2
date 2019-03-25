@@ -1,3 +1,16 @@
 <p> Pagina del curso </p>
 
-{{listacursos}}
+
+
+<table>
+  <caption>CURSOS</caption>	
+  <table border="1">
+  <tr>
+    <td>ID</td><td>NOMBRE</td><td>DESCRIPCION</td><td>VALOR</td>
+  </tr>
+{{#each listacursos}}	
+  <tr>
+    <td>{{this.id}}</td><td>{{this.nombre}}</td><td>{{this.descripcion}}</td><td>{{this.valor}}</td>
+  </tr>
+{{/each}}
+</table>
