@@ -6,7 +6,7 @@ const hbs = require('hbs');
 
 const bodyParser = require('body-parser');
 
-const servicioLogin = require('./servicios/login');
+const servicioUsuario = require('./servicios/servicioUsuario');
 const servicioCursos = require('./servicios/serviciodecursos');
 
 
@@ -27,25 +27,47 @@ hbs.registerPartials(directorioPartials);
 app.set('view engine', 'hbs');
 
 
-app.get('/', (req,res) => {
-	res.render('index',{
-		nombre : 'beta'
-	});
-});
+
  
 
 app.get('/login', (req,res) => {
 	res.render('login');
 }); 
 
-app.post('/auth', (req,res) => {
-	let auth = servicioLogin.login(req.body.nombre,req.body.pass);
-	if(auth)
+app.post('/login', (req,res) => {
+	let auth = servicioUsuario.login(req.body.id,req.body.pass);
+	let mensajeError;
+	if(auth){
 		pagina = 'index';
-	else
+	}
+	else{
 		pagina = 'login';
-	res.render(pagina);
+		mensajeError = 'Identificacion o clave incorrectos';
+	}
+	res.render(pagina, {
+		errorMsg : mensajeError
+	});
 }); 
+
+
+app.get('/crearUsuario', (req,res) => {
+	res.render('crearUsuario');
+}); 
+
+app.post('/crearUsuario', (req,res) => {
+	let mensajeError = servicioUsuario.crear(req.body.id,req.body.nombre,req.body.correo,req.body.telefono, req.body.clave);	
+	if(mensajeError){
+		pagina = 'crearUsuario';
+	}
+	else{
+		pagina = 'login';
+	}
+
+	res.render(pagina, {
+		error : mensajeError
+	});
+}); 
+
 
 app.get('/listar', (req,res) => {
 	let listacursos = servicioCursos.mostrar();
@@ -84,9 +106,7 @@ app.post('/ejecutacreacion', (req,res) => {
 
 
 app.get('*', (req,res) => {
-	res.render('index',{
-		nombre : 'beta'
-	});
+	res.render('login');
 });
  
 app.listen(3000, () => {
