@@ -37,22 +37,10 @@ listaCursos = []; // un vector que es el que vamos a llenar en Json, inicialment
  const mostrar = ()  => {
 	listar() // esto trae el archivo listado.json, solo falta imprimirlo en pantalla
 	console.log ('CURSOS DISPONIBLES');
-	listaCursos.forEach(curso => {
-
-		console.log (curso.nombre);
-		console.log ('CARACTERISTICAS');
-		console.log (curso.id);
-		console.log (curso.descripcion);
-		console.log (curso.valor);
-		console.log (curso.modalidad);
-		console.log (curso.intensidad);									
-		console.log (curso.estado + '\n');
-
-	
-	});
 
 		return listaCursos;
 }
+
 
 const guardar = ()  => {
 	let datos = JSON.stringify(listaCursos);        // guarda en string la variable lista cursos dentro de json
@@ -62,5 +50,17 @@ const guardar = ()  => {
 	})
 }
 
-	module.exports = {mostrar, crear, guardar};
+const mostrardetall = (ide)  => {
+	listar() // esto trae el archivo listado.json, solo falta imprimirlo en pantalla
+	let cur = listaCursos.find(buscar => buscar.id == ide); 
+	 if (!cur){
+			cur = 'no existe un curso con ese id';
+	 }
+
+	return cur;
+}
+
+
+
+	module.exports = {mostrar, crear, guardar, mostrardetall};
 

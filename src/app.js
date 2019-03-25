@@ -107,8 +107,9 @@ app.post('/ejecutacreacion', (req,res) => {
 }); 
 
 app.get('/detallecurso', (req,res) => {
+	let curso = servicioCursos.mostrardetall(req.query.id);
 	res.render('detallecurso',{
-		ide : ide
+		curso : curso
 	});
 }); 
 
