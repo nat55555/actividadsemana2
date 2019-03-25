@@ -84,6 +84,12 @@ app.post('/ejecutacreacion', (req,res) => {
 
 }); 
 
+app.get('/detallecurso', (req,res) => {
+	res.render('detallecurso',{
+		ide : ide
+	});
+}); 
+
 
 app.get('*', (req,res) => {
 	res.render('index',{
