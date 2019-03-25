@@ -1,11 +1,44 @@
-{{>header}}
+{{>headerLogin}}
 
-<form action="auth" method="post">
 
-<input type="text" name="nombre" />
-<input type="password" name="pass" />
-<button >Enviar</button>
+<div>
 
+<p> Ingrese a la plataforma </p>
+
+<form action="login" method="post">
+  <div class="form-group">
+    <label>Documento de identidad</label>
+    <input
+      required
+      name="id"
+      type="text"
+      class="form-control {{#if errorMsg}}is-invalid{{/if}}"
+      value="{{this.value}}"
+    />
+
+<label>Clave</label>
+    <input
+      required
+      name="pass"
+      type="password"
+      class="form-control {{#if errorMsg}}is-invalid{{/if}}"
+      value="{{this.value}}"
+    />
+
+   
+  
+  <button type="submit" class="btn btn-primary">Ingresar</button>
+  <button onclick="location.href='crearUsuario'" type="button" class="btn btn-primary">
+        Registrarse</button>
+
+
+ 
+</div>
 </form>
+</div>
+
+<div class="invalid-feedback">Error {{errorMsg}}</div>
+
+
 
 {{>footer}}

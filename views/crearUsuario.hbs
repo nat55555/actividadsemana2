@@ -1,0 +1,72 @@
+{{>headerLogin}}
+
+
+<div>
+
+<p> Por favor ingrese la siguiente informacion </p>
+
+<form action="crearUsuario" method="post">
+  <div class="form-group">
+    <label>Documento de identidad</label>
+    <input
+      required
+      name="id"
+      type="text"
+      class="form-control {{#if error}}is-invalid{{/if}}"
+      value="{{this.value}}"
+    />
+
+    <label>Nombre</label>
+    <input
+      required
+      name="nombre"
+      type="text"
+      class="form-control {{#if error}}is-invalid{{/if}}"
+      value="{{this.value}}"
+    />
+
+     <label>Correo</label>
+    <input
+      required
+      name="correo"
+      type="text"
+      class="form-control {{#if error}}is-invalid{{/if}}"
+      value="{{this.value}}"
+    />
+
+    <label>Telefono</label>
+    <input
+      required
+      name="telefono"
+      type="text"
+      class="form-control {{#if error}}is-invalid{{/if}}"
+      value="{{this.value}}"
+    />
+
+<label>Clave</label>
+    <input
+      required
+      name="clave"
+      type="password"
+      class="form-control {{#if error}}is-invalid{{/if}}"
+      value="{{this.value}}"
+    />
+
+   
+  </div>
+  <button type="submit" class="btn btn-primary">Crear</button>
+  
+
+
+
+
+</form>
+
+
+
+ <div class="invalid-feedback">{{error}}</div>
+
+</div>
+
+
+{{>footer}}
