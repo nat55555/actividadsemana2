@@ -20,7 +20,7 @@ listaCursos = []; // un vector que es el que vamos a llenar en Json, inicialment
 	  valor: curso.valor,
 	  modalidad: curso.modalidad,
 	  intensidad: curso.intensidad,
-	  estado: curso.estado		  	  
+	  estado: 'disponible'	  	  
 	  };
 // parabuscar los duplicados la llave sera el id	 
 	 let duplicado = listaCursos.find(identi => identi.id == curso.id); 
@@ -38,7 +38,18 @@ listaCursos = []; // un vector que es el que vamos a llenar en Json, inicialment
 	listar() // esto trae el archivo listado.json, solo falta imprimirlo en pantalla
 	console.log ('CURSOS DISPONIBLES');
 
-		return listaCursos;
+	return listaCursos;
+}
+
+ const mostrardisponibles = ()  => {
+	listar() // esto trae el archivo listado.json, solo falta imprimirlo en pantalla
+	let disponibles = listaCursos.filter(cur => cur.estado == 'disponible')  // entreg un vector de estudiantes con nota mayor a 3
+
+	if (disponibles.lenght == 0) {
+					disponibles = 'no existe un curso con ese id';
+	}
+
+	return disponibles;
 }
 
 
@@ -62,5 +73,5 @@ const mostrardetall = (ide)  => {
 
 
 
-	module.exports = {mostrar, crear, guardar, mostrardetall};
+	module.exports = {mostrar, crear, guardar, mostrardetall, mostrardisponibles};
 

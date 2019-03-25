@@ -70,7 +70,7 @@ app.post('/crearUsuario', (req,res) => {
 
 
 app.get('/listar', (req,res) => {
-	let listacursos = servicioCursos.mostrar();
+	let listacursos = servicioCursos.mostrardisponibles();
 	res.render('listarcursos',{
 		listacursos : listacursos
 	});
