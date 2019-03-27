@@ -61,6 +61,11 @@ const guardar = ()  => {
 	})
 }
 
+const mostrar = ()  => {
+	listar() // esto trae el archivo listado.json, solo falta imprimirlo en pantalla
+
+	return listaUsuario;
+}
 
 
-module.exports = {login, crear};
+module.exports = {login, crear,mostrar};

@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 
 const servicioUsuario = require('./servicios/servicioUsuario');
 const servicioCursos = require('./servicios/serviciodecursos');
-
+const servicioInscripcion = require('./servicios/servicioInscripcion');
 
 const directorioPublico = path.join(__dirname ,'../public');
 const directorioPartials = path.join(__dirname ,'../partials');
@@ -90,6 +90,7 @@ app.post('/crear', (req,res) => {
 		intensidad: req.body.intensidad,	
 		estado: req.body.estado	
 	};
+
 	let msg = servicioCursos.crear(curso);	
 
 	//console.log(req.body);
@@ -113,6 +114,32 @@ app.get('/detallecurso', (req,res) => {
 	});
 }); 
 
+
+app.get('/inscribirACurso', (req,res) => {
+	let listacursos = servicioCursos.mostrardisponibles();	
+	let listausuarios = servicioUsuario.mostrar();		
+	res.render('inscribirseCurso',{
+		listacursos : listacursos,
+		listausuarios: listausuarios
+	});
+}); 
+
+app.post('/inscribirACurso', (req,res) => {
+	let inscripcion = {
+		nombreuser: parseInt(req.body.nombreuser),		
+		nombrecurso: req.body.nombrecurso
+	};
+
+	let msg = servicioInscripcion.inscribirseCurso(inscripcion);	
+
+	//console.log(req.body);
+	res.render('inscribirseCurso',{
+		nombreuser: parseInt(req.body.nombreuser),		
+		nombrecurso: req.body.nombrecurso,
+		mensajeError : msg
+		});		
+
+});
 
 app.get('*', (req,res) => {
 	res.render('login');
