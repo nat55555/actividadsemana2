@@ -152,6 +152,34 @@ app.get('/listarinscritos', (req,res) => {
 });
 
 
+//aunno funciona 28 mar
+app.get('/desinscribiracurso', (req,res) => {
+	let listacursos = servicioCursos.mostrardisponibles();	
+	let listausuarios = servicioUsuario.mostrar();		
+	res.render('desinscribircurso',{
+		listacursos : listacursos,
+		listausuarios: listausuarios
+	});
+});
+
+
+app.post('/desinscribiracurso', (req,res) => {
+
+
+	let msg = servicioInscripcion.eliminar(parseInt(req.body.nombreuser),parseInt(req.body.nombrecurso));	
+
+	res.render('desinscribircurso',{
+		nombreuser: parseInt(req.body.nombreuser),		
+		nombrecurso: req.body.nombrecurso,
+		mensajeError : msg
+		});		
+
+});
+
+
+
+
+
 app.get('*', (req,res) => {
 	res.render('login');
 });

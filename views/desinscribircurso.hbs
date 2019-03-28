@@ -1,0 +1,40 @@
+
+{{>header}}
+
+<h1> Desinscripción a cursos de educacion continua </h1>
+
+
+<form action="/desinscribiracurso" method="post">
+
+
+	  <div class="form-group">
+			<label for="nombreuser">NOMBRE DEL USUARIO</label>
+			<select name="nombreuser" id="selec4">       
+         {{#each listausuarios}}	
+			<option value="{{this.id}}">{{this.nombre}}</option>
+         {{/each}}
+         	</select>
+	  </div>
+
+
+	  <div class="form-group">
+			<label for="nombrecurso">NOMBRE DEL CURSO</label>
+			<select name="nombrecurso" id="select3">       
+         {{#each listacursos}}	
+			<option value="{{this.id}}">{{this.nombre}}</option>
+         {{/each}}
+         	</select>
+	  </div>
+
+
+<button>Eliminar inscripción</button>
+</form>
+  
+
+<div>
+{{mensajeError}}
+</div>	
+
+
+
+{{>footer}}

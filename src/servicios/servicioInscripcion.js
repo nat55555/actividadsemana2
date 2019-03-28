@@ -93,4 +93,43 @@ const mostrarinscritos = ()  => {
 
 
 
-module.exports = {inscribirseCurso, mostrar, mostrarinscritos};
+// este todavia no funciona 28 marzo
+const eliminar = (iduser,idcurso)  => {
+  listar ()
+
+   let cursoexiste = listaInscripciones.find(identi => identi.curso == idcurso);
+   if(cursoexiste){
+
+                    listaInscripciones =  listaInscripciones.filter(identi => identi.curso != idcurso);
+
+                    let usuarios = cursoexiste.usuarios.filter(ins => ins != iduser); 
+
+
+                              if (usuarios.length == cursoexiste.usuarios.length) {
+                                         msg = 'el estudiante no estaba matriculado en ese curso';
+                              }
+                              else {
+
+                                          cursoexiste.usuarios = usuarios;
+
+                                          listaInscripciones.push(cursoexiste);
+
+                                          guardar();
+
+                                          msg = 'des-suscripción exitosa';
+
+                              }
+        
+
+    }else{
+          msg = 'no existen inscripciones para ese curso';
+    }
+
+
+return msg;
+
+}   
+
+
+
+module.exports = {inscribirseCurso, mostrar, mostrarinscritos,eliminar};
