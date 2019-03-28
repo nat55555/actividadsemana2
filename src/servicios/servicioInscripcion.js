@@ -1,6 +1,9 @@
 const fs = require('fs');
 listaInscripciones = [];
 
+const servicioUsuario = require('./servicioUsuario');
+const servicioCursos = require('./serviciodecursos');
+
 const guardar = ()  => {
 	let datos = JSON.stringify(listaInscripciones);        // guarda en string la variable lista cursos dentro de json
 	fs.writeFile('inscripcionescurso.json', datos, (err)=>{
@@ -18,7 +21,11 @@ const guardar = ()  => {
 	}
  }
 
+ const mostrar = ()  => {
+	listar() // esto trae el archivo listado.json, solo falta imprimirlo en pantalla
 
+	return listaInscripciones;
+}
 
 //
  const inscribirseCurso = (nombreuser,nombrecurso) => {
@@ -44,4 +51,26 @@ const guardar = ()  => {
 
 
 
-module.exports = {inscribirseCurso};
+const mostrarinscritos = ()  => {
+	listar() // esto trae el archivo listado.json, solo falta imprimirlo en pantalla
+
+    let listacursos = servicioCursos.mostrardisponibles();	
+    let listausuarios = servicioUsuario.mostrar();
+    let nombreuno;
+
+    listaInscripciones.forEach(inscripcion => {
+
+		console.log (inscripcion.nombrecurso);
+        console.log (inscripcion.nombreuser) ;
+    
+        nombreuno = inscripcion.nombreuser;
+
+        });
+
+        return nombreuno;
+       
+}
+
+
+
+module.exports = {inscribirseCurso, mostrar, mostrarinscritos};

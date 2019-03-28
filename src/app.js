@@ -141,6 +141,21 @@ app.post('/inscribirACurso', (req,res) => {
 
 });
 
+
+app.get('/listarinscritos', (req,res) => {
+	let listacursos = servicioCursos.mostrardisponibles();	
+	let listausuarios = servicioUsuario.mostrar();
+	let listainscritos = servicioInscripcion.mostrar();	
+	let listainscritoslarge = servicioInscripcion.mostrarinscritos();					
+	res.render('listarinscritos',{
+		listacursos : listacursos,
+		listausuarios: listausuarios,
+		listainscritos: listainscritos,
+		listainscritoslarge: listainscritoslarge
+	});
+});
+
+
 app.get('*', (req,res) => {
 	res.render('login');
 });

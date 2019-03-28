@@ -77,5 +77,8 @@ const mostrardetall = (ide)  => {
 
 
 
+
+
+
 	module.exports = {mostrar, crear, guardar, mostrardetall, mostrardisponibles};
 
