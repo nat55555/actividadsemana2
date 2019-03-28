@@ -28,17 +28,26 @@ const guardar = ()  => {
 }
 
 //
- const inscribirseCurso = (nombreuser,nombrecurso) => {
+ const inscribirseCurso = (iduser,idcurso) => {
     listar();
     let msg;
     let inscr = {
-    id: nombreuser,	  
-    nombre: nombrecurso    //datos que quedan dentro del objeto est	  	  
     };
+       let existe = listaInscripciones.find(identi => identi.curso == idcurso); 
+    if(existe){
+      existe.usuarios.push(iduser);
+     // inscr = existe;
+    }else{
+      inscr = {'curso' : idcurso  , 'usuarios' : [iduser]};
+      listaInscripciones.push(inscr);
+    }
+
+      
+
 // parabuscar los duplicados la llave sera el id	 
-   //let duplicado = listaInscripciones.find(identi => identi.id == inscripcio.id); 
+  // let duplicado = listaInscripciones.find(identi => identi.id == inscripcio.id); 
    //if (!duplicado){
-    listaInscripciones.push(inscr);  // almacenar el objeto dentro del  vector lista cursos
+  //  listaInscripciones.push(inscr);  // almacenar el objeto dentro del  vector lista cursos
     msg = 'inscripcion exitosamente!!!';
     guardar(); // guarda lo q esta en lista cursos dentro de datos  - esos datos en el archivo
   // }
@@ -53,21 +62,32 @@ const guardar = ()  => {
 
 const mostrarinscritos = ()  => {
 	listar() // esto trae el archivo listado.json, solo falta imprimirlo en pantalla
-
+  let respuesta = [];
     let listacursos = servicioCursos.mostrardisponibles();	
     let listausuarios = servicioUsuario.mostrar();
     let nombreuno;
 
     listaInscripciones.forEach(inscripcion => {
 
-		console.log (inscripcion.nombrecurso);
-        console.log (inscripcion.nombreuser) ;
+        let fila = {};
+        let nombreCurso = servicioCursos.mostrardetall(inscripcion.curso).nombre;
+
+        let estudiantes = [];
+
+         inscripcion.usuarios.forEach(estudiante =>{
+           estu = servicioUsuario.mostrardetall(estudiante);
+           estudiantes.push(estu);
+        });
+
+        fila = {'curso' : nombreCurso , 'inscrito' : estudiantes};
+
+        respuesta.push(fila);
+        console.log (fila) ;
     
-        nombreuno = inscripcion.nombreuser;
 
         });
 
-        return nombreuno;
+        return respuesta;
        
 }
 

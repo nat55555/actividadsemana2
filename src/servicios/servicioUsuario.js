@@ -67,5 +67,15 @@ const mostrar = ()  => {
 	return listaUsuario;
 }
 
+const mostrardetall = (ide)  => {
+	listar() // esto trae el archivo listado.json, solo falta imprimirlo en pantalla
+	let est = listaUsuario.find(buscar => buscar.id == ide); 
+	 if (!est){
+			est = 'no existe un usuario con ese id';
+	 }
 
-module.exports = {login, crear,mostrar};
+	return est;
+}
+
+
+module.exports = {login, crear,mostrar, mostrardetall};

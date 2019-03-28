@@ -125,14 +125,10 @@ app.get('/inscribirACurso', (req,res) => {
 }); 
 
 app.post('/inscribirACurso', (req,res) => {
-	let inscripcion = {
-		nombreuser: parseInt(req.body.nombreuser),		
-		nombrecurso: req.body.nombrecurso
-	};
 
-	let msg = servicioInscripcion.inscribirseCurso(inscripcion);	
 
-	//console.log(req.body);
+	let msg = servicioInscripcion.inscribirseCurso(parseInt(req.body.nombreuser),parseInt(req.body.nombrecurso));	
+
 	res.render('inscribirseCurso',{
 		nombreuser: parseInt(req.body.nombreuser),		
 		nombrecurso: req.body.nombrecurso,
