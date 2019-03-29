@@ -76,9 +76,20 @@ const mostrardetall = (ide)  => {
 }
 
 
+const cerrarcurso = (ide)  => {
+	listar() // esto trae el archivo listado.json
+	
+	let encontrado = listaCursos.find(buscar => buscar.id == ide);  // para encontrar el curso
+	 if (!encontrado){
+		console.log ('curso no encontrado, no se puede actualizar');
+	} else {
+		encontrado.estado = 'cerrado'; 
+		guardar()
+	 }
+}
 
 
 
 
-	module.exports = {mostrar, crear, guardar, mostrardetall, mostrardisponibles};
+	module.exports = {mostrar, crear, guardar, mostrardetall, mostrardisponibles, cerrarcurso};
 

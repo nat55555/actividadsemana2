@@ -33,28 +33,36 @@ const guardar = ()  => {
     let msg;
     let inscr = {
     };
-       let existe = listaInscripciones.find(identi => identi.curso == idcurso); 
+    
+    let existe = listaInscripciones.find(identi => identi.curso == idcurso); 
+    
     if(existe){
-      existe.usuarios.push(iduser);
-     // inscr = existe;
+
+        
+        let usuarios = existe.usuarios.filter(ins => ins != iduser); 
+
+            if (usuarios.length == existe.usuarios.length) {
+                
+                existe.usuarios.push(iduser);
+
+                msg = 'inscripcion exitosamente!!!';
+                guardar();
+
+            } else {
+                 
+                 msg = 'usuario ya esta matriculado en ese curso, no se puede matricular de nuevo'
+            
+            }
+
+
     }else{
       inscr = {'curso' : idcurso  , 'usuarios' : [iduser]};
       listaInscripciones.push(inscr);
+      msg = 'inscripcion exitosamente!!!';
+      guardar();
     }
 
       
-
-// parabuscar los duplicados la llave sera el id	 
-  // let duplicado = listaInscripciones.find(identi => identi.id == inscripcio.id); 
-   //if (!duplicado){
-  //  listaInscripciones.push(inscr);  // almacenar el objeto dentro del  vector lista cursos
-    msg = 'inscripcion exitosamente!!!';
-    guardar(); // guarda lo q esta en lista cursos dentro de datos  - esos datos en el archivo
-  // }
-  // else
-  //    msg = 'y//////////////////////';
-
-
   return msg;
 }
 
@@ -71,20 +79,28 @@ const mostrarinscritos = ()  => {
 
         let fila = {};
         let nombreCurso = servicioCursos.mostrardetall(inscripcion.curso).nombre;
+        let idCurso = servicioCursos.mostrardetall(inscripcion.curso).id;        
+        let estadoCurso = servicioCursos.mostrardetall(inscripcion.curso).estado;
 
         let estudiantes = [];
 
+        if (estadoCurso == 'disponible') {
+
          inscripcion.usuarios.forEach(estudiante =>{
            estu = servicioUsuario.mostrardetall(estudiante);
-           estudiantes.push(estu);
+           estudiantes.push(estu);           
         });
-
-        fila = {'curso' : nombreCurso , 'inscrito' : estudiantes};
-
+        
+        fila = {'idcurso' : idCurso ,'curso' : nombreCurso , 'inscrito' : estudiantes};
+        
         respuesta.push(fila);
+
+        } else {
+            console.log ('el curso esta cerrado') ;
+        }
+
         console.log (fila) ;
     
-
         });
 
         return respuesta;
@@ -93,7 +109,6 @@ const mostrarinscritos = ()  => {
 
 
 
-// este todavia no funciona 28 marzo
 const eliminar = (iduser,idcurso)  => {
   listar ()
 

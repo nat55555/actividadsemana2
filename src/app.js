@@ -141,18 +141,14 @@ app.post('/inscribirACurso', (req,res) => {
 app.get('/listarinscritos', (req,res) => {
 	let listacursos = servicioCursos.mostrardisponibles();	
 	let listausuarios = servicioUsuario.mostrar();
-	let listainscritos = servicioInscripcion.mostrar();	
-	let listainscritoslarge = servicioInscripcion.mostrarinscritos();					
+	let listainscritos = servicioInscripcion.mostrar();		
+	let listainscritoslarge = servicioInscripcion.mostrarinscritos();						
 	res.render('listarinscritos',{
-		listacursos : listacursos,
-		listausuarios: listausuarios,
-		listainscritos: listainscritos,
-		listainscritoslarge: listainscritoslarge
+		listainscritoslarge : listainscritoslarge
 	});
 });
 
 
-//aunno funciona 28 mar
 app.get('/desinscribiracurso', (req,res) => {
 	let listacursos = servicioCursos.mostrardisponibles();	
 	let listausuarios = servicioUsuario.mostrar();		
@@ -176,6 +172,23 @@ app.post('/desinscribiracurso', (req,res) => {
 
 });
 
+app.get('/cerrarcurso', (req,res) => {
+	let curso = servicioCursos.cerrarcurso(req.query.id);
+	let listainscritoslarge = servicioInscripcion.mostrarinscritos();					
+	res.render('listarinscritos',{
+		listainscritoslarge : listainscritoslarge
+	});
+}); 
+
+
+app.get('/eliminarinscripcion', (req,res) => {
+	let eliminarinscripcion = servicioInscripcion.eliminar();
+	let curso = servicioCursos.eliminarinscripcion(req.query.iduser,req.query.idcurso);
+	let listainscritoslarge = servicioInscripcion.mostrarinscritos();					
+	res.render('listarinscritos',{
+		listainscritoslarge : listainscritoslarge
+	});
+}); 
 
 
 
