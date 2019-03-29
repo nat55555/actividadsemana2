@@ -1,10 +1,15 @@
 const fs = require('fs');
+const path = require('path');
+
 listaCursos = []; // un vector que es el que vamos a llenar en Json, inicialmente vacio
 
 
+const archivojson = path.join(__dirname ,'../../listacursos.json');
+
  const listar = ()  => {
-    try {	
-	listaCursos = require('../../listacursos.json'); // TRAE (lee) EL LISTADO DE CURSOS EXISTENTE
+    try {
+    listaCursos = JSON.parse(fs.readFileSync(archivojson, 'utf8')); // lectura sincrona
+	//listaCursos = require('../../listacursos.json'); // TRAE (lee) EL LISTADO DE CURSOS EXISTENTE
 	} catch {  // se va para aqui si el archivo buscado no existe
 		listaCursos = []; 	
 	}

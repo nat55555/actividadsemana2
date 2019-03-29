@@ -5,7 +5,7 @@
 
 <p> Por favor ingrese la siguiente informacion </p>
 
-<form action="crearUsuario" method="post">
+<form action="{{#if usuario.id}}actualizarUsuario{{else}}crearUsuario{{/if}}" method="post">
   <div class="form-group">
     <label>Documento de identidad</label>
     <input
@@ -13,7 +13,7 @@
       name="id"
       type="text"
       class="form-control {{#if error}}is-invalid{{/if}}"
-      value="{{this.value}}"
+      value="{{usuario.id}}"
     />
 
     <label>Nombre</label>
@@ -22,7 +22,7 @@
       name="nombre"
       type="text"
       class="form-control {{#if error}}is-invalid{{/if}}"
-      value="{{this.value}}"
+      value="{{usuario.nombre}}"
     />
 
      <label>Correo</label>
@@ -31,7 +31,7 @@
       name="correo"
       type="text"
       class="form-control {{#if error}}is-invalid{{/if}}"
-      value="{{this.value}}"
+      value="{{usuario.correo}}"
     />
 
     <label>Telefono</label>
@@ -40,21 +40,35 @@
       name="telefono"
       type="text"
       class="form-control {{#if error}}is-invalid{{/if}}"
-      value="{{this.value}}"
+      value="{{usuario.telefono}}"
     />
 
+
+{{#if usuario.id}}
+<label>Rol</label>
+      <label for="rol">Rol</label>
+      <select name="rol" id="rol">
+      <option value="aspirante">aspirante</option>
+      <option value="docente">docente</option>
+      </select>
+
+{{else}}
 <label>Clave</label>
     <input
       required
       name="clave"
       type="password"
       class="form-control {{#if error}}is-invalid{{/if}}"
-      value="{{this.value}}"
+      value="{{usuario.pass}}"
     />
+{{/if}}
+
+
+
 
    
   </div>
-  <button type="submit" class="btn btn-primary">Crear</button>
+  <button type="submit" class="btn btn-primary">{{#if usuario.id}}Actualizar{{else}}Crear{{/if}}</button>
   
 
 

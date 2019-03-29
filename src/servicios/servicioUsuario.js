@@ -1,5 +1,9 @@
 const fs = require('fs');
+const path = require('path');
+
 listaUsuario = []; // un vector que es el que vamos a llenar en Json, inicialmente vacio
+const archivojson = path.join(__dirname ,'../../listausuarios.json');
+
 
 let login = (id, clave) => {
 	listar();
@@ -11,7 +15,8 @@ let login = (id, clave) => {
 
  const listar = ()  => {
     try {	
-	listaUsuario = require('../../listausuarios.json'); // TRAE (lee) EL LISTADO DE USUARIOS EXISTENTE
+	//listaUsuario = require('../../listausuarios.json'); // TRAE (lee) EL LISTADO DE USUARIOS EXISTENTE
+	  listaUsuario = JSON.parse(fs.readFileSync(archivojson, 'utf8')); // lectura sincrona
 	} catch {  // se va para aqui si el archivo buscado no existe
 		let usuarioAdmin = {
 	  id: '1',	  
@@ -53,6 +58,37 @@ const crear = (id, nombre, correo, telefono, clave	) => {
 }
 
 
+const actualizar = (id, nombre, correo, telefono, rol	) => {
+	  listar();
+	  let msg;
+
+
+	   let existe = listaUsuario.find(identi => identi.id == id); 
+	 if (!existe){
+	 	return 'No debe modificar la identificacion del usuario.';
+	 }
+
+	  let usuarioDb = {
+	  id: id,	  
+	  nombre: nombre,    //datos que quedan dentro del objeto est
+	  correo: correo,
+	  telefono: telefono,
+	  clave: existe.clave,
+	  rol: rol	  	  
+	  };
+
+
+    listaUsuario =  listaUsuario.filter(identi => identi.id != id);
+
+
+	  listaUsuario.push(usuarioDb);  // almacenar el objeto dentro del  vector lista 
+	  guardar(); // guarda lo q esta en lista dentro de datos  - esos datos en el archivo
+	 
+	
+}
+
+
+
 const guardar = ()  => {
 	let datos = JSON.stringify(listaUsuario);        // guarda en string la variable lista cursos dentro de json
 	fs.writeFile('listausuarios.json', datos, (err)=>{
@@ -78,4 +114,4 @@ const mostrardetall = (ide)  => {
 }
 
 
-module.exports = {login, crear,mostrar, mostrardetall};
+module.exports = {login, crear,mostrar, mostrardetall, actualizar};

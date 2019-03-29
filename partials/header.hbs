@@ -29,7 +29,13 @@
       </li>
          <li class="nav-item">
         <a class="nav-link" href="listarinscritos">Ver inscritos</a>
-      </li>         
+      </li>
+      {{#if auth.isAdmin }}
+      </li>
+         <li class="nav-item">
+        <a class="nav-link" href="listarUsuarios">Listar Usuarios</a>
+      </li>   
+      {{/if}}
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
