@@ -151,5 +151,42 @@ return msg;
 }   
 
 
+const  mostarmiscursos = (iduser)  => {
+    listar() // esto trae el archivo inscripcionescursos.json
+    let idcursos = [];
+    let respuesta = [];
+    let errorcursos = [];
 
-module.exports = {inscribirseCurso, mostrar, mostrarinscritos,eliminar};
+    
+    console.log('*** mostarmiscursos ')
+    listaInscripciones.forEach(inscripcion => {
+      let estamatriculado = inscripcion.usuarios.find(usuarioinscrito => usuarioinscrito ==iduser);
+      if (estamatriculado) {
+            idcursos.push(inscripcion.curso)
+      } 
+      });
+      console.log('ids de cursos ='+idcursos)
+
+
+      idcursos.forEach(idcurso => {
+        let fila = {};
+        let curso = servicioCursos.mostrardetall(idcurso);
+        if(curso!='no existe un curso con ese id'){
+          fila = {'idcurso' : curso.id ,'nombre' : curso.nombre , 'descripcion' : curso.descripcion,'valor':curso.valor,'iduser' : iduser};
+          respuesta.push(fila);
+        }else{
+          error=curso+' '+idcurso
+          errorcursos.push(error)
+        }
+            
+      });
+      console.log('respuesta:')
+      console.log(respuesta)
+      console.log('errores cursos')
+      console.log(errorcursos)
+      return respuesta;
+       
+}
+
+
+module.exports = {inscribirseCurso, mostrar, mostrarinscritos,eliminar,mostarmiscursos};
