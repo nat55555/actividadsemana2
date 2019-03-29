@@ -183,7 +183,7 @@ app.get('/cerrarcurso', (req,res) => {
 
 app.get('/eliminarinscripcion', (req,res) => {
 	let eliminarinscripcion = servicioInscripcion.eliminar();
-	let curso = servicioCursos.eliminarinscripcion(req.query.iduser,req.query.idcurso);
+	let curso = servicioInscripcion.eliminar(req.query.iduser,req.query.idcurso);
 	let listainscritoslarge = servicioInscripcion.mostrarinscritos();					
 	res.render('listarinscritos',{
 		listainscritoslarge : listainscritoslarge
