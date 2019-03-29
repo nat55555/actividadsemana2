@@ -142,7 +142,7 @@ app.get('/listarinscritos', (req,res) => {
 	let listacursos = servicioCursos.mostrardisponibles();	
 	let listausuarios = servicioUsuario.mostrar();
 	let listainscritos = servicioInscripcion.mostrar();		
-	let listainscritoslarge = servicioInscripcion.mostrarinscritos();						
+	let listainscritoslarge = servicioInscripcion.mostrarinscritos();
 	res.render('listarinscritos',{
 		listainscritoslarge : listainscritoslarge
 	});
@@ -151,10 +151,11 @@ app.get('/listarinscritos', (req,res) => {
 
 app.get('/desinscribiracurso', (req,res) => {
 	let listacursos = servicioCursos.mostrardisponibles();	
-	let listausuarios = servicioUsuario.mostrar();		
+	let listausuarios = servicioUsuario.mostrar();
 	res.render('desinscribircurso',{
 		listacursos : listacursos,
 		listausuarios: listausuarios
+		
 	});
 });
 
@@ -189,6 +190,13 @@ app.get('/eliminarinscripcion', (req,res) => {
 		listainscritoslarge : listainscritoslarge
 	});
 }); 
+
+app.get('/listarmiscursos', (req,res) => {
+	let listacursosusuario=servicioInscripcion.mostarmiscursos('1');
+	res.render('listarmiscursos',{
+		listacursosusuario : listacursosusuario
+	});
+});
 
 
 
