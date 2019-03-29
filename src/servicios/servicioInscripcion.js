@@ -1,8 +1,12 @@
 const fs = require('fs');
+const path = require('path');
 listaInscripciones = [];
 
 const servicioUsuario = require('./servicioUsuario');
 const servicioCursos = require('./serviciodecursos');
+
+const archivojson = path.join(__dirname ,'../../inscripcionescurso.json');
+
 
 const guardar = ()  => {
 	let datos = JSON.stringify(listaInscripciones);        // guarda en string la variable lista cursos dentro de json
@@ -15,7 +19,8 @@ const guardar = ()  => {
 
  const listar = ()  => {
     try {	
-	listaInscripciones = require('../../inscripcionescurso.json'); // TRAE (lee) EL LISTADO DE CURSOS EXISTENTE
+	  //listaInscripciones = require('../../inscripcionescurso.json'); // TRAE (lee) EL LISTADO DE CURSOS EXISTENTE
+    listaInscripciones = JSON.parse(fs.readFileSync(archivojson, 'utf8')); // lectura sincrona
 	} catch {  // se va para aqui si el archivo buscado no existe
 		listaInscripciones = []; 	
 	}

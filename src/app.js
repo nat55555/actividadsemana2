@@ -26,8 +26,8 @@ hbs.registerPartials(directorioPartials);
 
 app.set('view engine', 'hbs');
 
-
-
+//usuario global, compartido por diferentes sessiones
+let auth = {};
  
 
 app.get('/login', (req,res) => {
@@ -35,7 +35,8 @@ app.get('/login', (req,res) => {
 }); 
 
 app.post('/login', (req,res) => {
-	let auth = servicioUsuario.login(req.body.id,req.body.pass);
+    auth = servicioUsuario.login(req.body.id,req.body.pass);
+    auth.isAdmin = auth.rol == 'coordinador';
 	let mensajeError;
 	if(auth){
 		pagina = 'index';
@@ -45,13 +46,18 @@ app.post('/login', (req,res) => {
 		mensajeError = 'Identificacion o clave incorrectos';
 	}
 	res.render(pagina, {
-		errorMsg : mensajeError
+		errorMsg : mensajeError,
+		auth : auth
 	});
 }); 
 
 
 app.get('/crearUsuario', (req,res) => {
-	res.render('crearUsuario');
+	let usuario = servicioUsuario.mostrardetall(req.query.id);
+	res.render('crearUsuario', {
+		usuario : usuario,
+		auth : auth
+	});
 }); 
 
 app.post('/crearUsuario', (req,res) => {
@@ -64,20 +70,44 @@ app.post('/crearUsuario', (req,res) => {
 	}
 
 	res.render(pagina, {
-		error : mensajeError
+		error : mensajeError,
+		auth : auth
 	});
+}); 
+
+app.post('/actualizarUsuario', (req,res) => {
+	let mensajeError = servicioUsuario.actualizar(req.body.id,req.body.nombre,req.body.correo,req.body.telefono, req.body.rol);	
+	if(mensajeError){
+		pagina = 'crearUsuario';
+			let usuario = servicioUsuario.mostrardetall(req.query.id);
+
+		res.render(pagina, {
+		usuario : usuario,
+		error : mensajeError,
+		auth : auth
+	});
+	}
+	else{
+		pagina = 'listarUsuarios';
+		res.redirect(pagina);
+	}
+
+	
 }); 
 
 
 app.get('/listar', (req,res) => {
 	let listacursos = servicioCursos.mostrardisponibles();
 	res.render('listarcursos',{
-		listacursos : listacursos
+		listacursos : listacursos,
+		auth : auth
 	});
 });
 
 app.get('/crear', (req,res) => {
-	res.render('crearcurso');
+	res.render('crearcurso', {
+		auth : auth
+	});
 }); 
 
 app.post('/crear', (req,res) => {
@@ -102,7 +132,8 @@ app.post('/crear', (req,res) => {
 		modalidad: req.body.modalidad,	
 		intensidad: req.body.intensidad,	
 		estado: req.body.estado	,
-		mensajeError : msg
+		mensajeError : msg,
+		auth : auth
 		});	
 
 }); 
@@ -110,7 +141,8 @@ app.post('/crear', (req,res) => {
 app.get('/detallecurso', (req,res) => {
 	let curso = servicioCursos.mostrardetall(req.query.id);
 	res.render('detallecurso',{
-		curso : curso
+		curso : curso,
+		auth : auth
 	});
 }); 
 
@@ -120,7 +152,8 @@ app.get('/inscribirACurso', (req,res) => {
 	let listausuarios = servicioUsuario.mostrar();		
 	res.render('inscribirseCurso',{
 		listacursos : listacursos,
-		listausuarios: listausuarios
+		listausuarios: listausuarios,
+		auth : auth
 	});
 }); 
 
@@ -132,7 +165,8 @@ app.post('/inscribirACurso', (req,res) => {
 	res.render('inscribirseCurso',{
 		nombreuser: parseInt(req.body.nombreuser),		
 		nombrecurso: req.body.nombrecurso,
-		mensajeError : msg
+		mensajeError : msg,
+		auth : auth
 		});		
 
 });
@@ -144,7 +178,8 @@ app.get('/listarinscritos', (req,res) => {
 	let listainscritos = servicioInscripcion.mostrar();		
 	let listainscritoslarge = servicioInscripcion.mostrarinscritos();						
 	res.render('listarinscritos',{
-		listainscritoslarge : listainscritoslarge
+		listainscritoslarge : listainscritoslarge,
+		auth : auth
 	});
 });
 
@@ -154,7 +189,8 @@ app.get('/desinscribiracurso', (req,res) => {
 	let listausuarios = servicioUsuario.mostrar();		
 	res.render('desinscribircurso',{
 		listacursos : listacursos,
-		listausuarios: listausuarios
+		listausuarios: listausuarios,
+		auth : auth
 	});
 });
 
@@ -167,7 +203,8 @@ app.post('/desinscribiracurso', (req,res) => {
 	res.render('desinscribircurso',{
 		nombreuser: parseInt(req.body.nombreuser),		
 		nombrecurso: req.body.nombrecurso,
-		mensajeError : msg
+		mensajeError : msg,
+		auth : auth
 		});		
 
 });
@@ -176,7 +213,8 @@ app.get('/cerrarcurso', (req,res) => {
 	let curso = servicioCursos.cerrarcurso(req.query.id);
 	let listainscritoslarge = servicioInscripcion.mostrarinscritos();					
 	res.render('listarinscritos',{
-		listainscritoslarge : listainscritoslarge
+		listainscritoslarge : listainscritoslarge,
+		auth : auth
 	});
 }); 
 
@@ -186,12 +224,19 @@ app.get('/eliminarinscripcion', (req,res) => {
 	let curso = servicioInscripcion.eliminar(req.query.iduser,req.query.idcurso);
 	let listainscritoslarge = servicioInscripcion.mostrarinscritos();					
 	res.render('listarinscritos',{
-		listainscritoslarge : listainscritoslarge
+		listainscritoslarge : listainscritoslarge,
+		auth : auth
 	});
 }); 
 
 
-
+app.get('/listarUsuarios', (req,res) => {
+	let listausuarios = servicioUsuario.mostrar();
+	res.render('listaUsuarios',{
+		listausuarios : listausuarios,
+		auth : auth
+	});
+});
 
 app.get('*', (req,res) => {
 	res.render('login');
