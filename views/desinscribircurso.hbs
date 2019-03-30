@@ -37,6 +37,10 @@
 
 </form>
 
+<div>
+{{mensajeError}}
+</div>	
+
 {{#each listainscritoslarge as |lista|}}	
 <table class="table table-striped">
   <th colspan=6>{{lista.curso}} </th>	  
@@ -51,14 +55,6 @@
 </table>
 
 {{/each}}
-
-
-  
-
-<div>
-{{mensajeError}}
-</div>	
-
 
 
 {{>footer}}

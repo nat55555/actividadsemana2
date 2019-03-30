@@ -185,13 +185,10 @@ app.get('/listarinscritos', (req,res) => {
 
 
 app.get('/desinscribiracurso', (req,res) => {
-	console.log('*****metodo get ')
 	let listacursos = servicioCursos.mostrardisponibles();	
 	let listausuarios = servicioUsuario.mostrar();
-
-	//let listainscritos = servicioInscripcion.mostrar();		
-	let listainscritoslarge = servicioInscripcion.mostrarinscritos();
-	res.render('desinscribircurso',{
+    let listainscritoslarge = servicioInscripcion.mostrarinscritos();
+    res.render('desinscribircurso',{
 		listacursos : listacursos,
 		listausuarios: listausuarios,
 		listainscritoslarge : listainscritoslarge,
@@ -201,17 +198,15 @@ app.get('/desinscribiracurso', (req,res) => {
 
 
 app.post('/desinscribiracurso', (req,res) => {
-
-
 	let msg = servicioInscripcion.eliminar(parseInt(req.body.nombreuser),parseInt(req.body.nombrecurso));	
-
 	let listacursos = servicioCursos.mostrardisponibles();	
 	let listausuarios = servicioUsuario.mostrar();
-	let listainscritos = servicioInscripcion.mostrar();	
-	console.log('*****metodo post ')	
-	let listainscritoslarge = servicioInscripcion.mostrarinscritos();
-	console.log('*****metodo post  2')
-	res.render('desinscribircurso',{
+	let listainscritos = servicioInscripcion.mostrar();
+
+	setTimeout(function() {
+		console.log('probando el tiempo en post 2')
+		let listainscritoslarge = servicioInscripcion.mostrarinscritos();
+		res.render('desinscribircurso',{
 		nombreuser: parseInt(req.body.nombreuser),		
 		nombrecurso: req.body.nombrecurso,
 		mensajeError : msg,
@@ -219,7 +214,9 @@ app.post('/desinscribiracurso', (req,res) => {
 		listausuarios: listausuarios,
 		listainscritoslarge : listainscritoslarge,
 		auth : auth
-		});		
+		});	
+	},4000)
+		
 
 });
 

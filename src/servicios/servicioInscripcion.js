@@ -74,6 +74,7 @@ const guardar = ()  => {
 
 
 const mostrarinscritos = ()  => {
+  console.log('*** borrar funcion mostrarinscritos')
 	listar() // esto trae el archivo listado.json, solo falta imprimirlo en pantalla
   let respuesta = [];
     let listacursos = servicioCursos.mostrardisponibles();	
@@ -81,7 +82,7 @@ const mostrarinscritos = ()  => {
     let nombreuno;
 
     listaInscripciones.forEach(inscripcion => {
-
+console.log('*** borrar dentro de forEach')
         let fila = {};
         let nombreCurso = servicioCursos.mostrardetall(inscripcion.curso).nombre;
         let idCurso = servicioCursos.mostrardetall(inscripcion.curso).id;        
@@ -145,7 +146,7 @@ const eliminar = (iduser,idcurso)  => {
           msg = 'no existen inscripciones para ese curso';
     }
 
-
+    console.log('finaliza proceso de eliminar inscripcion')
 return msg;
 
 }   
