@@ -230,9 +230,15 @@ app.get('/eliminarinscripcion', (req,res) => {
 }); 
 
 app.get('/listarmiscursos', (req,res) => {
-	let listacursosusuario=servicioInscripcion.mostarmiscursos('1');
+	console.log('auth.id:'+auth.id)
+	console.log('auth.nombre:'+auth.nombre)
+	console.log('auth.role:'+auth.role)
+	console.log('auth.isAdmin:'+auth.isAdmin)
+
+	let listacursosusuario=servicioInscripcion.mostarmiscursos(auth.id);
 	res.render('listarmiscursos',{
-		listacursosusuario : listacursosusuario
+		listacursosusuario : listacursosusuario,
+		auth : auth
 	});
 });
 
@@ -244,6 +250,15 @@ app.get('/listarUsuarios', (req,res) => {
 		auth : auth
 	});
 });
+app.get('/eliminarmicurso', (req,res) => {
+	let eliminarinscripcion = servicioInscripcion.eliminar();
+	let curso = servicioInscripcion.eliminar(req.query.iduser,req.query.idcurso);
+	let listacursosusuario=servicioInscripcion.mostarmiscursos(auth.id);					
+	res.render('listarmiscursos',{
+		listacursosusuario : listacursosusuario,
+		auth : auth
+	});
+}); 
 
 app.get('*', (req,res) => {
 	res.render('login');
