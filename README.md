@@ -81,9 +81,8 @@ Historia de usuario # 4
 
 	procedimiento de ejecucion:
 		1.Ingresar a la aplicación en la url: http://localhost:3000/
-		2.para ejecutar la historia de usuario se debe estar logeado en la aplicacion con documento y clave
-		2.luego en la barra de menu ingresar a la opcion "Inscribir a un Curso"
-		  Alli se listaran los cursos disponibles para hacer la inscripcion.  Selecciona el usuario y el curso requerido y pulsa el                   boton inscribir.
+		2.Para ejecutar la historia de usuario se debe estar logeado en la aplicacion con documento y clave, por lo que si no se tiene un usuario, debe hacer el registro y luego loguearse.
+		3.Luego en la barra de menu ingresar a la opcion "Inscribirse a un Curso". Allí se listaran los cursos disponibles para hacer la inscripcion.  Seleccionar el curso que quiere inscribir y pulsar el botón inscribir.
 
 Historia de usuario # 5 
 	"Yo como aspirante necesito eliminar la inscripción de un curso para asistir a los que realmente
@@ -91,10 +90,9 @@ Historia de usuario # 5
 
 	procedimiento de ejecucion:
 		1.Ingresar a la aplicación en la url: http://localhost:3000/	
-		2.para ejecutar la historia de usuario se debe estar logeado en la aplicacion con documento y clave
-		3.luego en la barra de menu ingresar a la opcion "Mis cursos"
-		alli se listaran los cursos asignados para usuario registrado y se tendra la opcion de "eliminar inscripción" 
-		en la columna de detalles.
+		2.Para ejecutar la historia de usuario se debe estar logeado en la aplicacion con documento y clave, de un usuario con rol aspirante.
+		3. Para tener la opcion de eliminar una inscripción, primero debe haber creado una (Historia #4)
+		4. En la barra de menu ingresar a la opcion "Mis cursos", alli se listarán los cursos en los que se ha inscrito el usuario registrado y se tendrá la opcion de "eliminar inscripción" en la columna de detalles.
 
 Historia de usuario # 6
 	"Yo como coordinador de educación continua necesito ver los inscritos por cada uno de los cursos
@@ -102,9 +100,9 @@ Historia de usuario # 6
 
 	procedimiento de ejecucion:
 			1.Ingresar a la aplicación en la url: http://localhost:3000/
-			2. Para ejecutar la historia de usuario se debe ingresar en la aplicación como administrador, para el ingreso como administrados los datos son docuemento=1 y clave=admin.
-			3. Luego en la barra de menu ingresar a la opcion "Ver Inscriptos"
-			   alli  se muestran todos los inscriptos y adicionalmente tendra 2 opciones
+			2. Para ejecutar la historia de usuario se debe ingresar en la aplicación como coordinador, para el ingreso como coordinador los datos son docuemento=1 y clave=admin.
+			3. Luego, en la barra de menu ingresar a la opcion "Ver Inscriptos"
+			   allí  se muestran todos los inscriptos y adicionalmente tendrá 2 opciones
 			   Opcción 1.  Frente al nombre de cada curso aparece el link "Cerrar Curso"  para cerrar el curso.
 			   Opcción 2.  Frente a cada aspirante inscripto aparece el link "Eliminar Inscripcion"  para borrar a un                                              candidato al curso.
 
@@ -115,13 +113,13 @@ Historia de usuario # 7
 
 	procedimiento de ejecucion:
 		1.Ingresar a la aplicación en la url: http://localhost:3000/
-		2.Opcion 1:
-			A. Para ejecutar la historia de usuar se debe ingresar enla aplicacio como administrador, para ello se debe usar para el ingreso los datos docuemento=1 y clave=admin.
+		2. Loguearse como coordinador ( docuemento=1 y clave=admin).
+		3.Opcion 1:
+			A. Para ejecutar la historia de usuar se debe ingresar en la aplicación como coordinador ( docuemento=1 y clave=admin).
 			B.luego en la barra de menu ingresar a la opcion "Cancelar inscripción"
-			alli  se tendra la opcion de seleccionar un usuario y un curaso  y el boton de "eliminar inscripción" asi como tambien la lista de los cursos con usuarios inscritos.
-			C.una vez ejecutada la accion de "eliminar inscripción" se mostrara un mensaje que indica el resultado de la accion 
-		Opcion 2: El usuario administrador podra eliminar inscripcion usando la opcion de la barra de menu "Ver inscritos"
-				  en la aparecara la lista de los cursos con los usuarios inscritos por cada curso y en la columna de detalles se cuenta con la opcion de eliminar inscripcion
+			alli  se tendra la opcion de seleccionar un usuario, un curso y el botón de "eliminar inscripción" asi como tambien la lista de los cursos con usuarios inscritos.
+		Opcion 2: El usuario coordinador también podrá eliminar inscripción usando la opcion de la barra de menu "Ver inscritos"
+				  en la aparecara la lista de los cursos con los usuarios inscritos por cada curso y en la columna de detalles se cuenta con la opción de eliminar inscripción
 				  
 Historia de usuario # 8
 	"Yo como coordinador necesito gestionar los roles de los usuarios de mi sistema para poder asignar
@@ -129,10 +127,9 @@ Historia de usuario # 8
 
 	procedimiento de ejecucion:
 		1.Ingresar a la aplicación en la url: http://localhost:3000/
-		2.Opcion 1:
-			A. Para ejecutar la historia de usuar se debe ingresar en la aplicacion como coordinador, para ello se debe usar para el ingreso los datos documento=1 y clave=admin.
-			B.luego en la barra de menu ingresar a la opcion "Listar Usuarios
-			alli  se tendra la opcion de editar un usuario.
-			C.una vez realizado los cambios de click en el boton actualizar. Tenga en cuenta que no esta permitido modificar la identificacion o la clave del usuario. 
-		Opcion 2: Siguiendo el mismo procedimiento descrito en la opcion anterior podra acceder a modificar el campo "rol" que cuenta con los valores "aspirante" y "docente".
+		2. Loguearse como coordinador ( docuemento=1 y clave=admin).		
+		3.Opcion 1:
+			A. En la barra de menu ingresar a la opción "Listar Usuarios" y allí  se tendrá la opcion de editar un usuario.
+			B. Una vez realizado los cambios, se debe dar click en el boton "actualizar". Tenga en cuenta que no esta permitido modificar la identificacion o la clave del usuario. 
+		  Opcion 2: En la opción de "Editar Usuario", también podrá acceder a modificar el campo "rol" que cuenta con los valores "aspirante" y "docente".
 				  				  
