@@ -45,10 +45,18 @@ Historia de usuario # 1
 	visualizar los menú correspondientes a mi rol."
 
 	procedimiento de ejecucion:
-		1.Ingresar a la aplicacion en la url: http://localhost:3000/
-		2.Dar clik en el boton de "Registrarse"
-		3.Diligenciar el formulario
-
+		1. Ingresar a la aplicacion en la url: http://localhost:3000/
+		2. Dar clik en el boton de "Registrarse"
+		3. Diligenciar el formulario
+		4. Visitar la pagina sin loguearse para verificar las opciones disponibles para interesados
+		5. La opción "Ver cursos disponibles" le permite a interesados consultar los cursos disponibles.
+		6. Loguearse con un usuario creado (aspirante) para verificar las opciones disponibles para aspirantes.
+		7. La opción "Ver cursos disponibles" le permite a aspirantes consultar los cursos disponibles.		
+		8. Los aspirantes pueden optrar por inscribirse a un curso disponible a través de la opción "Inscribirse a un curso".
+		9. Loguearse como coordinador (user:1 pass:admin) para verificar las opciones disponibles para el coordinador.
+		10. Los usuarios de rol coordinador pueden ver los cursos disponibles en la opción "Ver cursos disponibles".
+		11. Los usuarios de rol coordinador pueden visualizar todos los cursos (disponibles y cerrados) a través de la opción "Ver todos los cursos".
+ 
 Historia de usuario # 2
 	"como coordinador necesito crear cursos de educación continua para ser divulgados entre posibles
 	interesados"
