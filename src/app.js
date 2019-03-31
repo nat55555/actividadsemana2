@@ -27,7 +27,7 @@ hbs.registerPartials(directorioPartials);
 app.set('view engine', 'hbs');
 
 //usuario global, compartido por diferentes sessiones
-let auth = {};
+let auth;
  
 
 app.get('/login', (req,res) => {
@@ -41,6 +41,7 @@ app.post('/login', (req,res) => {
 	if(auth){
 		pagina = 'index';
 		auth.isAdmin = auth.rol == 'coordinador';
+		auth.isAspirante = auth.rol == 'aspirante';
 	}
 	else{
 		pagina = 'login';
@@ -275,7 +276,7 @@ app.get('/eliminarmicurso', (req,res) => {
 }); 
 
 app.get('*', (req,res) => {
-	res.render('login');
+	res.render('index');
 });
  
 app.listen(3000, () => {

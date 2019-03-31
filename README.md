@@ -1,31 +1,32 @@
 # Actividad 2 curso virtual de node
 
-Para ejecutar: node .\src\app.js
+Para ejecutar el programa ejecute: node .\src\app.js
 
 Historia de usuario # 1
 	"como usuario necesito poder ingresar a la plataforma utilizando mis credenciales para poder
 	visualizar los menú correspondientes a mi rol."
 
 	procedimiento de ejecucion:
-		1.ingresar a la aplicacion en la url:http://localhost:3000/
-		2.dar clik en el boton de "Registrarse"
-		3.diligenciar el formulario
+		1.Ingresar a la aplicacion en la url: http://localhost:3000/
+		2.Dar clik en el boton de "Registrarse"
+		3.Diligenciar el formulario
 
 Historia de usuario # 2
 	"como coordinador necesito crear cursos de educación continua para ser divulgados entre posibles
 	interesados"
 
 	procedimiento de ejecucion:
-		1.ingrear a la aplicacion
-		2.en el barra de menu acceder al menu "crear curso"
-		3.diligenciar formulario
+		1.Ingresar a la aplicación en la url: http://localhost:3000/
+		2.Ingresar los datos de login del coordinador (user:1 pass:admin)
+		3.En el barra de menu acceder al menu "crear curso"
+		4.Diligenciar formulario
 
 Historia de usuario # 3
 	"Yo como interesado necesito ver una lista de cursos disponibles para identificar cual es el de mi
      interés"
 
      procedimiento de ejecucion:
-     	1.ingresar a la aplicacion
+		1.Ingresar a la aplicación en la url: http://localhost:3000/
      	2.en la barra de menu acceder al menu "Ver cursos"
 
 Historia de usuario # 4 
@@ -33,7 +34,8 @@ Historia de usuario # 4
          de mi interés"
 
 	procedimiento de ejecucion:
-		1.para ejecutar la historia de usuario se debe estar logeado en la aplicacion con documento y clave
+		1.Ingresar a la aplicación en la url: http://localhost:3000/
+		2.para ejecutar la historia de usuario se debe estar logeado en la aplicacion con documento y clave
 		2.luego en la barra de menu ingresar a la opcion "Inscribir a un Curso"
 		  Alli se listaran los cursos disponibles para hacer la inscripcion.  Selecciona el usuario y el curso requerido y pulsa el                   boton inscribir.
 
@@ -42,8 +44,9 @@ Historia de usuario # 5
 	estoy interesado y evitar ser sancionado por deserción"
 
 	procedimiento de ejecucion:
-		1.para ejecutar la historia de usuario se debe estar logeado en la aplicacion con documento y clave
-		2.luego en la barra de menu ingresar a la opcion "Mis cursos"
+		1.Ingresar a la aplicación en la url: http://localhost:3000/	
+		2.para ejecutar la historia de usuario se debe estar logeado en la aplicacion con documento y clave
+		3.luego en la barra de menu ingresar a la opcion "Mis cursos"
 		alli se listaran los cursos asignados para usuario registrado y se tendra la opcion de "eliminar inscripción" 
 		en la columna de detalles.
 
@@ -52,11 +55,12 @@ Historia de usuario # 6
          para poder tomar la decisión de dar inicio al curso"
 
 	procedimiento de ejecucion:
-			1. Para ejecutar la historia de usuario se debe ingresar enla aplicacio como administrador, para ello se debe                              usar para el ingreso los datos docuemento=1 y clave=admin.
-			2. luego en la barra de menu ingresar a la opcion "Ver Inscriptos"
+			1.Ingresar a la aplicación en la url: http://localhost:3000/
+			2. Para ejecutar la historia de usuario se debe ingresar en la aplicación como administrador, para el ingreso como administrados los datos son docuemento=1 y clave=admin.
+			3. Luego en la barra de menu ingresar a la opcion "Ver Inscriptos"
 			   alli  se muestran todos los inscriptos y adicionalmente tendra 2 opciones
-			   Opccion 1.  Frente al nombre de cada curso aparece el link "Cerrar Curso"  para cerrar el curso.
-			   Opccion 2.  Frente a cada aspirante inscripto aparece el link "Eliminar Inscripcion"  para borrar a un                                              candidato al curso.
+			   Opcción 1.  Frente al nombre de cada curso aparece el link "Cerrar Curso"  para cerrar el curso.
+			   Opcción 2.  Frente a cada aspirante inscripto aparece el link "Eliminar Inscripcion"  para borrar a un                                              candidato al curso.
 
 
 Historia de usuario # 7
@@ -64,10 +68,11 @@ Historia de usuario # 7
 	curso para poder liberar los cupos del curso facilitando la inscripción a nuevas personas"
 
 	procedimiento de ejecucion:
-		opcion 1:
-			1. Para ejecutar la historia de usuar se debe ingresar enla aplicacio como administrador, para ello se debe usar para el ingreso los datos docuemento=1 y clave=admin.
-			2.luego en la barra de menu ingresar a la opcion "Cancelar inscripción"
+		1.Ingresar a la aplicación en la url: http://localhost:3000/
+		2.Opcion 1:
+			A. Para ejecutar la historia de usuar se debe ingresar enla aplicacio como administrador, para ello se debe usar para el ingreso los datos docuemento=1 y clave=admin.
+			B.luego en la barra de menu ingresar a la opcion "Cancelar inscripción"
 			alli  se tendra la opcion de seleccionar un usuario y un curaso  y el boton de "eliminar inscripción" asi como tambien la lista de los cursos con usuarios inscritos.
-			3.una vez ejecutada la accion de "eliminar inscripción" se mostrara un mensaje que indica el resultado de la accion 
-		opcion 2: el usuario administrador podra eliminar inscripcion usando la opcion de la barra de menu "Ver inscritos"
+			C.una vez ejecutada la accion de "eliminar inscripción" se mostrara un mensaje que indica el resultado de la accion 
+		Opcion 2: El usuario administrador podra eliminar inscripcion usando la opcion de la barra de menu "Ver inscritos"
 				  en la aparecara la lista de los cursos con los usuarios inscritos por cada curso y en la columna de detalles se cuenta con la opcion de eliminar inscripcion
