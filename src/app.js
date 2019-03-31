@@ -308,7 +308,7 @@ app.get('/eliminarmicurso', (req,res) => {
 app.get('/listartodos', (req,res) => {
 	verificarAcceso(auth, '/listartodos', res);
 	let listacursos = servicioCursos.mostrar();
-	res.render('listarcursos',{
+	res.render('listarcursostodos',{
 		listacursos : listacursos,
 		auth : auth
 	});
