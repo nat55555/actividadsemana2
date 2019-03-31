@@ -2,6 +2,32 @@
 
 Para ejecutar: node .\src\app.js
 
+Historia de usuario # 1
+	"como usuario necesito poder ingresar a la plataforma utilizando mis credenciales para poder
+	visualizar los menú correspondientes a mi rol."
+
+	procedimiento de ejecucion:
+		1.ingresar a la aplicacion en la url:http://localhost:3000/
+		2.dar clik en el boton de "Registrarse"
+		3.diligenciar el formulario
+
+Historia de usuario # 2
+	"como coordinador necesito crear cursos de educación continua para ser divulgados entre posibles
+	interesados"
+
+	procedimiento de ejecucion:
+		1.ingrear a la aplicacion
+		2.en el barra de menu acceder al menu "crear curso"
+		3.diligenciar formulario
+
+Historia de usuario # 3
+	"Yo como interesado necesito ver una lista de cursos disponibles para identificar cual es el de mi
+     interés"
+
+     procedimiento de ejecucion:
+     	1.ingresar a la aplicacion
+     	2.en la barra de menu acceder al menu "Ver cursos"
+
 Historia de usuario # 4 
 	"Yo como aspirante necesito realizar mi proceso de inscripción para reservar mi cupo en el curso
          de mi interés"
