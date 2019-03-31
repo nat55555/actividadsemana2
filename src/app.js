@@ -36,10 +36,11 @@ app.get('/login', (req,res) => {
 
 app.post('/login', (req,res) => {
     auth = servicioUsuario.login(req.body.id,req.body.pass);
-    auth.isAdmin = auth.rol == 'coordinador';
+
 	let mensajeError;
 	if(auth){
 		pagina = 'index';
+		auth.isAdmin = auth.rol == 'coordinador';
 	}
 	else{
 		pagina = 'login';
@@ -223,10 +224,11 @@ app.post('/desinscribiracurso', (req,res) => {
 app.get('/cerrarcurso', (req,res) => {
 	let curso = servicioCursos.cerrarcurso(req.query.id);
 	let listainscritoslarge = servicioInscripcion.mostrarinscritos();					
-	res.render('listarinscritos',{
-		listainscritoslarge : listainscritoslarge,
-		auth : auth
-	});
+	//res.render('listarinscritos',{
+	//	listainscritoslarge : listainscritoslarge,
+	//	auth : auth
+	//});
+	res.redirect('listarinscritos');
 }); 
 
 
@@ -234,10 +236,11 @@ app.get('/eliminarinscripcion', (req,res) => {
 	let eliminarinscripcion = servicioInscripcion.eliminar();
 	let curso = servicioInscripcion.eliminar(req.query.iduser,req.query.idcurso);
 	let listainscritoslarge = servicioInscripcion.mostrarinscritos();					
-	res.render('listarinscritos',{
+	/*res.render('listarinscritos',{
 		listainscritoslarge : listainscritoslarge,
 		auth : auth
-	});
+	});*/
+	res.redirect('listarinscritos');
 }); 
 
 app.get('/listarmiscursos', (req,res) => {
