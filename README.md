@@ -2,9 +2,9 @@
 
 Este proyecto es una aplicación web que permite gestionar cursos con base al rol del usuario. De esta forma:
 
---Interesado cualquier usuario que acceda al sistema, este puede visualizar que cursos estan disponibles y una descripción de dicho curso.
---Aspirante usuario que se ha registrado en el sistema, este puede ademas inscribirse a un curso, ver en que cursos esta inscrito y desincribirse.
---Coordinador usuario del sistema con privilegios para crear cursos, cerrar cursos, desincribir a usuarios de cursos
+- Interesado cualquier usuario que acceda al sistema, este puede visualizar que cursos estan disponibles y una descripción de dicho curso.
+- Aspirante usuario que se ha registrado en el sistema, este puede ademas inscribirse a un curso, ver en que cursos esta inscrito y desincribirse.
+- Coordinador usuario del sistema con privilegios para crear cursos, cerrar cursos, desincribir a usuarios de cursos
 
 # Como usar la aplicación
 
@@ -18,7 +18,9 @@ Para obtener el codigo fuente el comando es :
 
 	git clone https://github.com/nat55555/actividadsemana2.git
 	
-Una vez descargue el proyecto, dirijase al directorio "actividadsemana2"	
+Una vez descargue el proyecto, dirijase al directorio "actividadsemana2" y ejecute el siguiente comando
+
+	npm i
 
 Finalmente, para iniciar el programa ejecute el comando: 
 
