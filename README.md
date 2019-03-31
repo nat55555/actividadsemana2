@@ -1,6 +1,42 @@
-# Actividad 2 curso virtual de node
+# Actividad 2 curso virtual de NodeJs
 
-Para ejecutar el programa ejecute: node .\src\app.js
+Este proyecto es una aplicación web que permite gestionar cursos con base al rol del usuario. De esta forma:
+
+--Interesado cualquier usuario que acceda al sistema, este puede visualizar que cursos estan disponibles y una descripción de dicho curso.
+--Aspirante usuario que se ha registrado en el sistema, este puede ademas inscribirse a un curso, ver en que cursos esta inscrito y desincribirse.
+--Coordinador usuario del sistema con privilegios para crear cursos, cerrar cursos, desincribir a usuarios de cursos
+
+# Como usar la aplicación
+
+Para usar el sistema debe contar con los siguientes programas instalados en su entorno local :
+
+-Git
+-NodeJs
+-NPM
+
+Para obtener el codigo fuente el comando es :
+
+	git clone https://github.com/nat55555/actividadsemana2.git
+	
+Una vez descargue el proyecto, dirijase al directorio "actividadsemana2"	
+
+Finalmente, para iniciar el programa ejecute el comando: 
+
+	node .\src\app.js
+	
+# Consideraciones generales
+
+-El usuario coordinador por defecto, tiene estos datos de ingreso :
+-- identificación = 1
+-- clave = admin
+-Puede crear un nuevo usuario con rol aspirante en la opción "Registrarme"
+-La aplicacion tambien cuenta con algunos cursos y usuarios creados para facilitar las pruebas
+-**La funcionalidad de "login" sirve para identificar el usuario que esta usando la aplicacion con base al rol que este tenga podra acceder a ciertas opciones del menu.
+Tenga presente que este login solo tiene el proposito de permitir verificar ciertos aspectos de las historias y no es un "login" en el sentido estricto de la palabra, es decir,
+no se tienen encuenta casos como sesión con usuarios concurrentes o expiración de sesión.**
+
+
+# Historias de Usuario
 
 Historia de usuario # 1
 	"como usuario necesito poder ingresar a la plataforma utilizando mis credenciales para poder
@@ -76,3 +112,17 @@ Historia de usuario # 7
 			C.una vez ejecutada la accion de "eliminar inscripción" se mostrara un mensaje que indica el resultado de la accion 
 		Opcion 2: El usuario administrador podra eliminar inscripcion usando la opcion de la barra de menu "Ver inscritos"
 				  en la aparecara la lista de los cursos con los usuarios inscritos por cada curso y en la columna de detalles se cuenta con la opcion de eliminar inscripcion
+				  
+Historia de usuario # 8
+	"Yo como coordinador necesito gestionar los roles de los usuarios de mi sistema para poder asignar
+	permisos adicionales en el manejo de la plataformas"
+
+	procedimiento de ejecucion:
+		1.Ingresar a la aplicación en la url: http://localhost:3000/
+		2.Opcion 1:
+			A. Para ejecutar la historia de usuar se debe ingresar en la aplicacion como coordinador, para ello se debe usar para el ingreso los datos documento=1 y clave=admin.
+			B.luego en la barra de menu ingresar a la opcion "Listar Usuarios
+			alli  se tendra la opcion de editar un usuario.
+			C.una vez realizado los cambios de click en el boton actualizar. Tenga en cuenta que no esta permitido modificar la identificacion o la clave del usuario. 
+		Opcion 2: Siguiendo el mismo procedimiento descrito en la opcion anterior podra acceder a modificar el campo "rol" que cuenta con los valores "aspirante" y "docente".
+				  				  
