@@ -329,5 +329,5 @@ let verificarAcceso = (auth, recurso, res) => {
 };
  
 app.listen(3000, () => {
-	console.log('-------------------------------------------------- \n \n La aplicación está escuchando en el puerto 3000 \n INGRESE A: http://127.0.0.1:3000/login \n \n -------------------------------------------------- \n ')	
+	console.log('-------------------------------------------------- \n \n La aplicación está escuchando en el puerto 3000 \n INGRESE A: http://127.0.0.1:3000/ \n \n -------------------------------------------------- \n ')	
 });

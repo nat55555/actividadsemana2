@@ -9,9 +9,9 @@
   "author": "Natalia Cardona",
   "contributors": [
     "Bayron Arenas",
-	"John Cardona",
-	"Fabian Gonzalez"
-  ]
+    "John Cardona",
+    "Fabian Gonzalez"
+  ],
   "license": "ISC",
   "dependencies": {
     "body-parse": "^0.1.0",
