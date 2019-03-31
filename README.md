@@ -10,9 +10,9 @@ Este proyecto es una aplicación web que permite gestionar cursos con base al ro
 
 Para usar el sistema debe contar con los siguientes programas instalados en su entorno local :
 
--Git
--NodeJs
--NPM
+- Git
+- NodeJs
+- NPM
 
 Para obtener el codigo fuente el comando es :
 
@@ -28,12 +28,12 @@ Finalmente, para iniciar el programa ejecute el comando:
 	
 # Consideraciones generales
 
--El usuario coordinador por defecto, tiene estos datos de ingreso :
+- El usuario coordinador por defecto, tiene estos datos de ingreso :
 -- identificación = 1
 -- clave = admin
--Puede crear un nuevo usuario con rol aspirante en la opción "Registrarme"
--La aplicacion tambien cuenta con algunos cursos y usuarios creados para facilitar las pruebas
--**La funcionalidad de "login" sirve para identificar el usuario que esta usando la aplicacion con base al rol que este tenga podra acceder a ciertas opciones del menu.
+- Puede crear un nuevo usuario con rol aspirante en la opción "Registrarme"
+- La aplicacion tambien cuenta con algunos cursos y usuarios creados para facilitar las pruebas
+- **La funcionalidad de "login" sirve para identificar el usuario que esta usando la aplicacion con base al rol que este tenga podra acceder a ciertas opciones del menu.
 Tenga presente que este login solo tiene el proposito de permitir verificar ciertos aspectos de las historias y no es un "login" en el sentido estricto de la palabra, es decir,
 no se tienen encuenta casos como sesión con usuarios concurrentes o expiración de sesión.**
 
