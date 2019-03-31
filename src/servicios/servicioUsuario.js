@@ -4,6 +4,13 @@ const path = require('path');
 listaUsuario = []; // un vector que es el que vamos a llenar en Json, inicialmente vacio
 const archivojson = path.join(__dirname ,'../../listausuarios.json');
 
+const rolCoordinador = 'coordinador';
+
+const recursosxrol = [
+	{rol : 'interesado', recursos : ['/listar','/detallecurso', '/crearUsuario']},
+	{rol : 'aspirante' , recursos : ['/listar','/listarmiscursos','/inscribirACurso', '/crearUsuario', '/eliminarmicurso']}
+];
+
 
 let login = (id, clave) => {
 	listar();
@@ -24,7 +31,7 @@ let login = (id, clave) => {
 	  correo: 'natacb@gmail.com',
 	  telefono: 'telefono',
 	  clave: 'admin',
-	  rol: 'coordinador'	  	  
+	  rol: 	 rolCoordinador 	  
 	  };
 		listaUsuario = [usuarioAdmin]; 	
 	}
@@ -114,4 +121,23 @@ const mostrardetall = (ide)  => {
 }
 
 
-module.exports = {login, crear,mostrar, mostrardetall, actualizar};
+const verificarAcceso = (rol,recurso)  => {
+	listar() // esto trae el archivo listado.json, solo falta imprimirlo en pantalla
+	//el coordinador puede acceder a cualquier recurso
+	if(rolCoordinador == rol){
+		return true;
+	}
+
+	let recxrol = recursosxrol.find(rxr => rxr.rol == rol); 
+	let response = false;
+	 if (recxrol){
+	 	let recursos = recxrol.recursos;
+		let tienePermiso = recursos.find(rec => rec == recurso); 
+		response = tienePermiso  ? true : false;
+	 }
+
+	return response;
+}
+
+
+module.exports = {login, crear,mostrar, mostrardetall, actualizar, verificarAcceso};
